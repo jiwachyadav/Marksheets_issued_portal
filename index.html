@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>G.L.M. College - Secure Master Portal v23.0</title>
-    <script src=https://script.google.com/macros/s/AKfycbyB7Q1J3_6T4ZAl1Uh1kVKkw_J1hDBi_ET50V-XyDZqX5ZxdcMYNclCX9SyI0TRMcF6/exec></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://unpkg.com/@zxing/library@latest"></script>
     <style>
         :root { --primary: #004d40; --accent: #ffd600; --danger: #c62828; --success: #2e7d32; --blue: #1976d2; --purple: #6a1b9a; --bg: #f4f7f6; }
@@ -36,8 +36,8 @@
 
 <div id="lock-screen">
     <div class="lock-box">
-        <h2 style="color: var(--danger);">🛡️ पोर्टल लॉक है बिना अनुमति के प्रयाश ना करें </h2>
-        <p>सिस्टम को सक्रिय करने के लिए 'एक्टिवेशन कोड' लिखें: जो हमारे ओनर के पास से मिलेगा </p>
+        <h2 style="color: var(--danger);">🛡️ पोर्टल लॉक है</h2>
+        <p>सिस्टम को सक्रिय करने के लिए 'एक्टिवेशन कोड' लिखें:</p>
         <input type="password" id="activeKeyInput" placeholder="यहाँ कोड लिखें...">
         <button onclick="unlockSystem()" style="background: var(--primary); color: white; font-weight: bold;">सिस्टम चालू करें</button>
         <p style="font-size: 11px; color: #777; margin-top: 15px;">G.L.M. College, Banmankhi - Admin Security</p>
@@ -47,7 +47,7 @@
 <div class="container" id="main-content">
     <div class="header">
         <h1>Gorelal Mehta College, Banmankhi</h1>
-        <p><b>Digital Portal office work </b></p>
+        <p><b>Master Digital Portal v23.0</b></p>
     </div>
 
     <div class="nav">
@@ -248,21 +248,6 @@
             tx.oncomplete = () => { alert("डेटा लोड सफल!"); updateCount(); };
         };
         reader.readAsArrayBuffer(file);
-    }
-	 function addSingleRecord() {
-        const type = document.getElementById('docType').value;
-        const roll = document.getElementById('addRoll').value.trim();
-        if(!roll) return alert("रोल नंबर आवश्यक है!");
-        const tx = db.transaction("documents", "readwrite");
-        tx.objectStore("documents").put({
-            id: type + "_" + roll, docType: type, name: document.getElementById('addName').value,
-            roll: roll, regNo: document.getElementById('addReg').value,
-            certNo: document.getElementById('addCert').value,
-            almirah: document.getElementById('addAlm').value,
-            shelf: document.getElementById('addSlf').value,
-            status: "Pending", issuedAt: "", issueDateOnly: ""
-        });
-        alert("एक रिकॉर्ड जोड़ा गया!");
     }
 
     function updateCount() {
